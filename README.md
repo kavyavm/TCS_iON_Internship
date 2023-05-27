@@ -10,5 +10,5 @@ The dataset has 2000 rows and 21 features of a smart phone. To proceed with this
 4. Ranked the features based on their importance scores.  
 5. Implemented a user interface to collect feature requests from users and update the feature ranking based on the user feedback.  
 
-Link to the deployed app is here:
+Link to the deployed app is here: http://kavyaviswm.pythonanywhere.com/
 
