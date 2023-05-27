@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <title>Smartphone Price Range Prediction</title>
+
+  
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  
+  <!-- responsive style -->
+  <link href="/static/css/responsive.css" rel="stylesheet" />
+  <link rel="stylesheet" href= "/static/css/style.css">
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="index.html">
+            <img src="/static/images/logo.png" alt="" />
+            <span>
+              Smartphone Price Range Prediction
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          
+          <div class="call_btn">
+            
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+
+
+  </div>
+
+  <!-- custom menu -->
+  <div class="custom_menu-container">
+    <div class="container">
+      <div class="custom_menu">
+        <ul class="navbar-nav ">
+          <li class="nav-item active">
+            <a class="nav-link pl-0" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/former">Predict </a>
+          </li>
+          
+
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- custom menu -->
+
+  <!-- do section -->
+  <section class="do_section layout_padding">
+    <div class="container">
+      <div class="custom_heading-container">
+        <h2 id="head1">
+          Rank & Price Prediction
+        </h2>
+        <h2 id="head2" style="display:none;">
+            Feature Importance & Ranking
+          </h2>
+      </div>
+      <div class="row">
+        <div class="tab-slider--nav" style="margin-top:20px;">
+            <ul class="tab-slider--tabs">
+                <li class="tab-slider--trigger sactive" rel="vtab1">Predict</li>
+                <li class="tab-slider--trigger" rel="vtab2">Feature Importance</li>
+            </ul>
+        </div>
+        <div class="tab-slider--container">
+        <div class="Prediction col-md-8 col-sm-9 tab-slider--body" id="vtab1">
+   
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        
+        <div class="column1">
+
+            <label for="battery_power">Battery Power</label>
+            <input type="text" id="battery_power" name="battery_power" style="size:10px;" required="required"/><br>
+
+            <label for="fc">Front Camera</label>
+            <input type="text" id="fc" name="fc" style="size:10px;" required="required"/><br>
+
+            <label for="mobile_wt">Mobile Weight</label>
+            <input type="text" id="mobile_wt" name="mobile_wt" style="size:10px;" required="required"/><br>
+
+            <label for="px_width">Pixel Resolution Width</label>
+		    <input type="text" id="px_width" name ="px_width" style="size:10px;" required="required"/><br>
+
+            <label for="talk_time">Talk Time</label>
+            <input type="text" id="talk_time" name ="talk_time" style="size:10px;" required="required"/><br>
+
+        </div>
+
+        <div class="column2">
+
+            <label for="blue">Bluetooth</label>
+            <select name="blue" id="name" required="required"> 
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="four_g ">4G</label>
+            <select name="four_g" id="name" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="n_cores">Number of Processor Cores</label>
+            <input type="text" id="n_cores" name ="n_cores" style="size:10px;" required="required"/><br>
+
+            <label for="ram">RAM</label>
+		    <input type="text" id="ram" name ="ram" style="size:10px;" required="required" /><br>
+
+            <label for="three_g ">3G</label>
+            <select name="three_g" id="name" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+
+        </div>
+
+        <div class="column3">
+
+            <label for="clock_speed">Clock Speed</label>
+            <input type="text" id ="clock_speed" name ="clock_speed" style="size:10px;" required="required" step="any"/><br>
+
+            <label for="int_memory">Internal Memory</label>
+            <input type="text" id ="int_memory" name ="int_memory" style="size:10px;" required="required" /><br>
+
+            <label for="pc">Primary Camera</label>
+            <input type="text" id ="pc" name ="pc" style="size:10px;" required="required" /><br>
+
+            <label for="sc_h">Screen Height</label>
+            <input type="text" id ="sc_h" name ="sc_h" style="size:10px;" required="required" /><br>
+
+            <label for="touch_screen">Touch Screen</label>
+            <select name="touch_screen" id="name" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+           
+        </div>
+
+        <div class="column4">
+
+            <label for="dual_sim">Dual Sim</label>
+            <select name="dual_sim" id="name" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="m_dep">Mobile Depth</label>
+            <input type="text" id ="m_dep" name ="m_dep" style="size:10px;" required="required" step="any"/><br>
+
+            <label for="px_height">Pixel Resolution Height</label>
+            <input type="text" id ="px_height" name ="px_height" style="size:10px;" required="required" /><br>
+
+            <label for="sc_w">Screen Width</label>
+            <input type="text" id ="sc_w" name ="sc_w" style="size:10px;" required="required" /><br>
+
+            <label for="wifi">Wifi</label>
+            <select name="wifi" id="name" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+           
+        </div>
+
+
+
+        <div class = "Button">
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </div>
+        
+    </form>
+
+   <br>
+   <br>
+   
+ </div>
+ <div class="answer " style="
+ display: inline-block !important;vertical-align: top;width:350px !important;
+">
+    <div class = "prediction_text">
+        
+        {% include 'table.html' %}
+    </div>
+</div>
+<div class="Prediction col-md-9 col-sm-9 tab-slider--body" id="vtab2">
+    <div class = "prediction_text">
+        
+    {% include 'table.html' %}
+</div></div>
+<div class="Prediction col-md-9 col-sm-9 tab-slider--body" id="vtab3"><div class = "prediction_text">
+        
+    {% include 'table.html' %}
+</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end do section -->
+  
+
+
+  <!-- footer section -->
+  <footer class="container-fluid footer_section">
+    <p>Kavya.V | TCS iON Internship</p>
+  </footer>
+  <!-- footer section -->
+
+  <script src="/static/js/jquery-3.4.1.min.js"></script>
+  <script src="/static/js/bootstrap.js"></script>
+  <script>
+    $("document").ready(function(){
+        
+  $(".tab-slider--body").hide();
+  $(".tab-slider--body:first").show();
+});
+
+$(".tab-slider--nav li").click(function() {
+  $(".tab-slider--body").hide();
+  var activeTab = $(this).attr("rel");
+  $("#"+activeTab).fadeIn();
+	if($(this).attr("rel") == "vtab2"){
+        $('#div2').show();
+        $('.txt-green').hide()
+        $('#head2').show();
+        $('#head1').hide();
+	}
+    else{
+        $('#div2').hide();
+        $('.txt-green').show()
+        $('#head1').show();
+        $('#head2').hide();
+	}
+  $(".tab-slider--nav li").removeClass("sactive");
+  $(this).addClass("sactive");
+});
+
+  </script>
+
+  <style>
+  .do_section .content-box.bg-blue {
+  background-color: #0878a0;
+}
+.Prediction{
+    display:inline-block;
+}
+body{
+    font-family:Poppins,sans-serif;
+    color:#101010;
+    background-color:#fff;
+ 
+
+}
+.do_section{
+ background-image: url("images/hand-holding-smartphone-line-art-style_278222-1903 (1).png"); /* Replace "image.jpg" with the path to your image */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left;
+
+  }
+.layout_padding{
+    padding:75px 0
+}
+.layout_padding2{
+    padding:45px 0
+}
+.custom_heading-container{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex
+}
+.custom_heading-container h2{
+    color:#000;
+    font-weight:700;
+    position:relative
+}
+.custom_heading-container h2::before{
+    content:"";
+    width:60px;
+    height:3px;
+    position:absolute;
+    left:0;
+    bottom:-2px;
+    background-color:#6bd1bd
+}
+.custom_heading-container h2::after{
+    content:"";
+    width:10px;
+    height:10px;
+    position:absolute;
+    top:50%;
+    right:-15px;
+    -webkit-transform:translateY(-50%);
+    transform:translateY(-50%);
+    background-color:#fb1004;
+    border-radius:100%
+}
+.hero_area{
+    height:100vh;
+    background-image:url(../images/hero-bg.png)
+}
+.sub_page .hero_area{
+    height:auto
+}
+.header_section .active a{
+    color:#0caa7d!important
+}
+.header_section .call_btn{
+    margin-left:auto
+}
+.header_section .call_btn a{
+    color:#000
+}
+.header_section .container-fluid{
+    padding-right:25px;
+    padding-left:25px
+}
+.header_section .nav_container{
+    margin:0 auto
+}
+.custom_nav-container.navbar-expand-lg .navbar-nav .nav-link{
+    padding:10px 30px;
+    color:#070101;
+    text-align:center
+}
+a,a:focus,a:hover{
+    text-decoration:none
+}
+a:focus,a:hover{
+    color:initial
+}
+.btn,.btn:focus{
+    outline:0!important;
+    -webkit-box-shadow:none;
+    box-shadow:none
+}
+.navbar-brand img{
+    width:45px
+}
+.navbar-brand,.navbar-brand:hover{
+    color:#0878a0;
+    font-size:22px;
+    font-weight:600;
+    text-transform:uppercase
+}
+.custom_nav-container{
+    z-index:99999;
+    padding:15px 0
+}
+.custom_nav-container .navbar-toggler{
+    outline:0
+}
+.custom_nav-container .navbar-toggler .navbar-toggler-icon{
+    background-image:url(../images/menu.png);
+    background-size:55px
+}
+.custom_menu-container{
+    background-color:#0caa7d
+}
+.custom_menu-container .custom_menu{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-pack:justify;
+    -ms-flex-pack:justify;
+    justify-content:space-between
+}
+.custom_menu-container .custom_menu .navbar-nav{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:horizontal;
+    -webkit-box-direction:normal;
+    -ms-flex-direction:row;
+    flex-direction:row
+}
+.custom_menu-container .custom_menu .navbar-nav .nav-link{
+    padding:15px 30px;
+    color:#fff;
+    text-align:center
+}
+.do_section .content-box{
+    color:#fff;
+    text-align:center;
+    padding:10px 15px;
+    border-radius:15px;
+    margin:25px 0
+}
+.do_section .content-box img{
+    height:70px;
+    margin:15px
+}
+.do_section .content-box.bg-red{
+    background-color:#fb1004
+}
+.do_section .content-box.bg-green{
+    background-color:#0ca57a
+}
+.footer_section{
+    background-color:#201f33;
+    font-weight:500;
+    font-family:Roboto,sans-serif
+}
+.footer_section p{
+    border-top:1px solid #fff;
+    width:60%;
+    color:#fff;
+    margin:0 auto;
+    text-align:center;
+    padding:20px 35px
+}
+.footer_section a{
+    color:#fff
+}
+.tab-slider--nav{
+	width: 100%;
+	float: left;
+	margin-bottom: base-margin;
+}
+.tab-slider--tabs{
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	border-radius: tab-border-radius;
+	overflow: hidden;
+	background: #fff;
+	height: tab-height;
+	user-select: none; 
+	
+}
+
+.tab-slider--trigger {
+	font-size: 12px;
+	line-height: 1;
+	font-weight: bold;
+	color: #345f90;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 15px;
+	position: relative;
+	z-index: 2;
+	cursor: pointer;
+	display: inline-block;
+	transition: color 250ms ease-in-out;
+	user-select: none; 
+}
+.tab-slider--body{
+	margin-bottom: base-margin;
+}
+.sactive{
+    background-color: #345f90;
+    color:#ffffff !important;
+}
+.tab-slider--container{
+    width:100%;
+}
+  </style>
+
+</body>
+
+</html>
